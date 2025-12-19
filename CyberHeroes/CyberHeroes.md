@@ -1,4 +1,4 @@
-![](https://tryhackme-images.s3.amazonaws.com/room-icons/5e9c5d0148cf664325c8a075-1737130334933)
+![](https://tryhackme-images.s3.amazonaws.com/room-icons/5e9c5d0148cf664325c8a075-1737130334933)  
 CyberHeroes
 =============================================
 
@@ -29,8 +29,9 @@ application.
 The following Nmap command was used:
 ```bash
 nmap -sV -sS -A -p- 10.67.164.12
-```
-![](PoC/nmap-port-scan.png)
+```  
+![](PoC/nmap-port-scan.png)  
+
 The scan revealed active services on the target,
 confirming that a web service was available for
 further investigation.  
@@ -40,7 +41,8 @@ further investigation.
 ----------------------------------------------------
 Using the discovered service information, I opened
 the target IP address in the browser, which loaded
-the application landing page.  
+the application landing page.    
+
 ![](PoC/application-homepage.png)
 
 ----------------------------------------------------
@@ -48,7 +50,9 @@ the application landing page.
 ----------------------------------------------------
 I navigated to the login page and inspected the page
 source using `Ctrl + U`  
+
 ![](PoC/login-page-source-code.png)  
+
 From the source code, the username was hardcoded as:
 ```bash
 h3ck3rBoi
@@ -62,7 +66,9 @@ The password was stored as a reversed string:
 ----------------------------------------------------
 Based on the reversed password identified in the
 previous step, I used **CyberChef** to decode it.  
+
 ![](PoC/cyberchef-reverse-password.png)  
+
 By applying the **Reverse** operation in CyberChef
 to the extracted string `54321@terceSrepuS`, the original plaintext
 password was revealed:
@@ -75,7 +81,9 @@ SuperSecret@12345
 Using the decoded credentials, authentication was
 successful, and the flag was retrieved from the
 application.  
+
 ![](PoC/flag-retrieved.png)
+
 flag{xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx}
 
 ----------------------------------------------------
