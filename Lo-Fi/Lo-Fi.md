@@ -67,7 +67,7 @@ performed based on user input.
 [+] Step 3: Parameter Manipulation
 ----------------------------------------------------
 To confirm file inclusion behavior, I attempted to
-load a non-existent file via the page parameter.
+load a non-existent file via the `page` parameter.
 
 Example:
 ```bash
@@ -87,7 +87,7 @@ directory and access sensitive files.
 
 Payload used:
 ```bash
-http://10.67.160.74/?page=../../../../flag.txt
+http://10.67.160.74/?page=../../../flag.txt
 ```
 
 ![](PoC/attempt.png)
