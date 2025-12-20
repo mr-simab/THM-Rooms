@@ -73,7 +73,7 @@ Example:
 ```bash
 http://10.67.160.74/?page=flag.txt
 ```  
-![](PoC/file-not-found.png)
+![](PoC/flag-attempt.png)
 
 The application returned a file-not-found message,
 confirming unsanitized file handling logic.
@@ -90,7 +90,7 @@ Payload used:
 http://10.67.160.74/?page=../../../../flag.txt
 ```
 
-![](PoC/flag-attempt.png)
+![](PoC/attempt.png)
 
 The traversal payload successfully bypassed directory
 restrictions.
