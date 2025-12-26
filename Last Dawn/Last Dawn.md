@@ -33,11 +33,11 @@ A basic scan confirms that a web service is running.
 nmap <TARGET_IP>
 ```
 
-![](Poc/nmap-scan.png)
+![](PoC/nmap-scan.png)
 
 Visiting the website reveals a minimal landing page.
 
-![](Poc/home-page.png)
+![](PoC/home-page.png)
 
 Inspecting the page source uncovers an HTML comment:
 ```bash
@@ -45,7 +45,7 @@ Inspecting the page source uncovers an HTML comment:
 ```  
 This confirms that secrets are not directly exposed and must be derived step by step.
 
-![](Poc/page-source.png)
+![](PoC/page-source.png)
 
 ------------------------------------------------------------
 [+] Task 3: Hidden Identity
@@ -57,7 +57,7 @@ The username is directly tied to the story narrative.
 
 From the context, the identity attempting to log in is:
 ```bash
-Username: sima
+Username: Sima
 ```
 
 ![](PoC/auth-hints.png)
@@ -65,7 +65,7 @@ Username: sima
 During failed login attempts, inspecting the HTTP response headers 
 reveals an encoded value.
 
-![](Poc/header-oath.png)
+![](PoC/header-oath.png)
 
 The encoded string observed is:
 ```bash
@@ -77,7 +77,7 @@ Using `CyberChef`:
 1. Base64 Decode    
 2. Reverse string (as hinted by the server authentication logic)
 
-![](Poc/cyberchef-decode.png)
+![](PoC/cyberchef-decode.png)
 
 Recovered credentials:
 ```bash
@@ -92,16 +92,16 @@ Authentication succeeded using the recovered credentials.
 After authentication, the application dynamically loads content.  
 Observing the request behavior shows a parameter controlling which file is displayed.
 
-![](Poc/file-parameter.png)
+![](PoC/file-parameter.png)
 
 The parameter is vulnerable to directory traversal.  
 By manipulating the parameter value, it becomes possible to escape the intended directory.
 
-![](Poc/path-traversal.png)
+![](PoC/path-traversal.png)
 
 Navigating to the restricted file reveals the final secret.
 
-![](Poc/final-flag.png)
+![](PoC/final-flag.png)
 
 Flag:  
 ```bash
